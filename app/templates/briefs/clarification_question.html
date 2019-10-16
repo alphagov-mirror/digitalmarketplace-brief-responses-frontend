@@ -27,13 +27,7 @@
 <div class="single-question-page">
   <div class="grid-row">
     <div class="column-two-thirds">
-
-      {% with
-        heading = form.clarification_question.question,
-        smaller = true
-      %}
-        {% include 'toolkit/page-heading.html' %}
-      {% endwith %}
+      <h1 class="govuk-heading-l">{{ form.clarification_question.question }}</h1>
 
       <form method="post">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />

@@ -23,12 +23,7 @@
 
 <div class="grid-row">
   <div class="column-two-thirds">
-    {% with
-      heading = "‘{}’ question and answer session details".format(brief.title),
-      smaller = true
-    %}
-      {% include 'toolkit/page-heading.html' %}
-    {% endwith %}
+    <h1 class="govuk-heading-l">{{ "‘{}’ question and answer session details".format(brief.title) }}</h1>
 
     <div class="padding-bottom-small">
       <p>

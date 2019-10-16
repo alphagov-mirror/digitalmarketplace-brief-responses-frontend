@@ -31,12 +31,9 @@
 {% block main_content %}
 <div class="grid-row">
   <div class="column-two-thirds">
-    {% with
-      heading = "Check and submit your answers" if brief_response.status == 'draft' else "Your application for ‘{}’".format(brief.title),
-      smaller = true
-      %}
-        {% include 'toolkit/page-heading.html' %}
-    {% endwith %}
+    <h1 class="govuk-heading-l">
+      {{ "Check and submit your answers" if brief_response.status == 'draft' else "Your application for ‘{}’".format(brief.title) }}
+    </h1>
 
     <div class="dmspeak">
       {% if brief_response.status != 'draft' %}
