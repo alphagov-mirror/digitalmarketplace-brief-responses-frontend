@@ -193,7 +193,7 @@ class TestBriefClarificationQuestions(BaseApplicationTest):
         doc = html.fromstring(html_string)
 
         assert '<script>alert(1)</script>' not in html_string
-        assert '<script>alert(1)</script>' in doc.xpath('//header/h1/text()')[0].strip()
+        assert '<script>alert(1)</script>' in doc.xpath('//h1/text()')[0].strip()
 
     def test_clarification_question_form_requires_existing_brief_id(self):
         self.login()
