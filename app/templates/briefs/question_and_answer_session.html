@@ -2,27 +2,24 @@
 
 {% block page_title %}{{ brief.title }} question and answer session details – Digital Marketplace{% endblock %}
 
-{% block breadcrumb %}
-  {%
-    with items = [
-      {
-        "link": "/",
-        "label": "Digital Marketplace",
-      },
-      {
-        "link": url_for("external.supplier_dashboard"),
-        "label": "Your account",
-      },
-    ]
-  %}
-    {% include "toolkit/breadcrumb.html" %}
-  {% endwith %}
+{% block breadcrumbs %}
+    {{ govukBreadcrumbs({
+      "items": [
+        {
+          "text": "Digital Marketplace",
+          "href": "/"
+        }, {
+          "text": "Your account",
+          "href": url_for("external.supplier_dashboard")
+        }
+      ]
+    }) }}
 {% endblock %}
 
 {% block main_content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ "‘{}’ question and answer session details".format(brief.title) }}</h1>
 
     <div class="padding-bottom-small">

@@ -1,3 +1,30 @@
 {% extends "toolkit/layouts/_base_page.html" %}
 
 // Insert line for each component module import
+{% from "components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "components/button/macro.njk" import govukButton %}
+{% from "components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "components/tabs/macro.njk" import govukTabs %}
+
+
+{# override content block to add a beforeContent block like the one in govuk-frontend template #}
+{% block content %}
+  {% block top_header %}{% endblock %}
+  <div id="wrapper">
+    {% block beforeContent %}
+      {{ govukPhaseBanner({
+        "tag": {
+          "text": "beta"
+        },
+        "html": 'Help us improve the Digital Marketplace - <a class="govuk-link" href="'  + url_for('external.help') + '">send your feedback</a>'
+      }) }}
+      {% block breadcrumbs %}{% endblock %}
+    {% endblock %}
+
+    <main id="content" role="main">
+      {% include "toolkit/flash_messages.html" %}
+      {% block main_content %}
+      {% endblock %}
+    </main>
+  </div>
+{% endblock %}
