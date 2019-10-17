@@ -1,4 +1,22 @@
 {% extends "toolkit/layouts/_base_page.html" %}
 
+{% from "components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+
 // Insert line for each component module import
 {% from "components/button/macro.njk" import govukButton %}
+
+{# override content block to add a beforeContent block like the one in govuk-frontend template #}
+{% block content %}
+  {% block top_header %}{% endblock %}
+  <div id="wrapper">
+    {% block beforeContent %}
+      {% block breadcrumb %}{% endblock %}
+    {% endblock %}
+    <main id="content" role="main">
+      {% include "toolkit/flash_messages.html" %}
+      {% block main_content %}
+      {% endblock %}
+    </main>
+  </div>
+{% endblock %}

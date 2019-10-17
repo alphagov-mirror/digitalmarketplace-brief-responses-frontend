@@ -2,24 +2,23 @@
 
 {% block breadcrumb %}
 
-  {%
-    with items = [
+  {{ govukBreadcrumbs({
+    "items": [
       {
-        "link": "/",
-        "label": "Digital Marketplace"
+        "href": "/",
+        "text": "Digital Marketplace"
       },
       {
-        "link": url_for('external.list_opportunities', framework_family=brief.framework.family),
-        "label": "Supplier opportunities"
+        "href": url_for('external.list_opportunities', framework_family=brief.framework.family),
+        "text": "Supplier opportunities"
       },
       {
-        "link": url_for('external.get_brief_by_id', framework_family=brief.framework.family, brief_id=brief.id),
-        "label": brief.title
+        "href": url_for('external.get_brief_by_id', framework_family=brief.framework.family, brief_id=brief.id),
+        "text": brief.title
       },
     ]
-  %}
-    {% include "toolkit/breadcrumb.html" %}
-  {% endwith %}
+  }) }}
+
 {% endblock %}
 
 {% block save_button %}
