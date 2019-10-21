@@ -267,7 +267,7 @@ class BaseApplicationTest(object):
         ]
         """
         breadcrumbs = html.fromstring(response.get_data(as_text=True)).xpath(
-            '//*[@id="global-breadcrumb"]/nav/ol/li'
+            '//*[@class="govuk-breadcrumbs"]/ol/li'
         )
 
         assert len(breadcrumbs) == len(expected_breadcrumbs)
