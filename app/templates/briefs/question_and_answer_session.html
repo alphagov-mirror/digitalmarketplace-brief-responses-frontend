@@ -1,6 +1,6 @@
 {% extends "_base_page.html" %}
 
-{% block page_title %}{{ brief.title }} question and answer session details – Digital Marketplace{% endblock %}
+{% block page_title %}‘{{ brief.title }}’ question and answer session details – Digital Marketplace{% endblock %}
 
 {% block breadcrumb %}
 
@@ -13,6 +13,9 @@
       {
         "href": url_for("external.supplier_dashboard"),
         "text": "Your account",
+      },
+      {
+        "text": "‘{}’ question and answer session details".format(brief.title|e)
       },
     ]
   }) }}

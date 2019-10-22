@@ -1791,7 +1791,8 @@ class TestStartBriefResponseApplication(BaseApplicationTest, BriefResponseTestHe
         expected_breadcrumbs = [
             ('Digital Marketplace', '/'),
             ('Supplier opportunities', '/digital-outcomes-and-specialists/opportunities'),
-            (brief['title'], '/digital-outcomes-and-specialists/opportunities/{}'.format(brief['id']))
+            (brief['title'], '/digital-outcomes-and-specialists/opportunities/{}'.format(brief['id'])),
+            ("Apply for ‘{}’".format(brief['title']), '')
         ]
         self.assert_breadcrumbs(res, expected_breadcrumbs)
 
@@ -2036,6 +2037,7 @@ class TestResponseResultPage(BaseApplicationTest, BriefResponseTestHelpers):
                 'Your Digital Outcomes and Specialists opportunities',
                 '/suppliers/opportunities/frameworks/digital-outcomes-and-specialists'
             ),
+            ('Your response to ‘I need a thing to do a thing’', ),
         ]
         self.assert_breadcrumbs(res, expected_breadcrumbs)
 

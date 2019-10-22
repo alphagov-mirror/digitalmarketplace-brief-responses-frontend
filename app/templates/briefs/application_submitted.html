@@ -18,6 +18,9 @@
         "href": url_for(".opportunities_dashboard", framework_slug=brief.frameworkSlug),
         "text": "Your {} opportunities".format(brief.frameworkName)
       },
+      {
+        "text": "Your response to ‘{}’".format(brief.title|e)
+      },
     ]
   }) }}
 

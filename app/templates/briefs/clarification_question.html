@@ -1,6 +1,6 @@
 {% extends "_base_page.html" %}
 
-{% block page_title %}Ask a question about {{ brief.title }} – Digital Marketplace{% endblock %}
+{% block page_title %}Ask a question about ‘{{ brief.title }}’ – Digital Marketplace{% endblock %}
 
 {% block breadcrumb %}
 
@@ -13,6 +13,9 @@
       {
         "href": url_for("external.supplier_dashboard"),
         "text": "Your account",
+      },
+      {
+        "text": "Ask a question about ‘{}’".format(brief.title|e)
       },
     ]
   }) }}

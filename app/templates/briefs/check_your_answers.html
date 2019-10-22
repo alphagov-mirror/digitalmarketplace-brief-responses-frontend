@@ -20,7 +20,10 @@
       },
       {
         "href": url_for("external.get_brief_by_id", framework_family=brief.framework.family, brief_id=brief.id),
-        "text": "{}".format(brief.title)
+        "text": "{}".format(brief.title|e)
+      },
+      {
+        "text": "Your response to ‘{}’".format(brief.title|e)
       },
     ]
   }) }}

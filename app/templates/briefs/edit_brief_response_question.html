@@ -16,6 +16,9 @@
         "href": url_for('external.get_brief_by_id', framework_family=brief.framework.family, brief_id=brief.id),
         "text": brief.title
       },
+      {
+        "text": question.question|e
+      },
     ]
   }) }}
 
