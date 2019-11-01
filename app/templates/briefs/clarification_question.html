@@ -41,7 +41,7 @@
         {{ govukButton({"text": "Ask question"}) }}
       </form>
 
-      <a href="{{ url_for('external.get_brief_by_id', framework_family=brief.framework.family, brief_id=brief.id) }}">Return to {{ brief.title }}</a>
+      <a class="govuk-link" href="{{ url_for('external.get_brief_by_id', framework_family=brief.framework.family, brief_id=brief.id) }}">Return to {{ brief.title }}</a>
     </div>
   </div>
 </div>

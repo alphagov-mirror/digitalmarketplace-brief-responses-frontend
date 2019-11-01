@@ -16,7 +16,7 @@ class AskClarificationQuestionForm(FlaskForm):
             Your question will be published with the buyer’s answer by {submission_deadline}.
             All questions and answers will be posted on the Digital Marketplace. Your company name won’t be visible.
             You shouldn’t include any confidential information in your question.
-            Read more about <a href="{guidance_url}">how supplier questions are managed</a>.
+            Read more about <a class="govuk-link" href="{guidance_url}">how supplier questions are managed</a>.
             """
         ),
         validators=[validators.DataRequired(message='Question cannot be empty'),

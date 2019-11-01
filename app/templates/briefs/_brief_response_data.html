@@ -95,7 +95,7 @@
                 {{ summary[item.type](item.value) }}
                 {% if show_edit_links %}
                    {% call summary.field(action=True) %}
-                      <a href="{{ url_for('.edit_single_question', brief_id=brief.id, brief_response_id=brief_response.id, question_id=item.id) }}"
+                      <a class="govuk-link" href="{{ url_for('.edit_single_question', brief_id=brief.id, brief_response_id=brief_response.id, question_id=item.id) }}"
                         data-analytics="trackEvent"
                         data-analytics-category="internal-link"
                         data-analytics-action="Edit Supplier Application"

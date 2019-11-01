@@ -28,6 +28,6 @@
 {% block save_button %}
   {{ govukButton({"text": "Save and continue"}) }}
   {% if previous_question_url %}
-    <a href="{{ previous_question_url }}">Back to previous page</a>
+    <a class="govuk-link" href="{{ previous_question_url }}">Back to previous page</a>
   {% endif %}
 {% endblock %}

@@ -32,7 +32,7 @@
     </div>
 
   <p class="govuk-body"></p>
-    <a href="{{ url_for('external.list_opportunities', framework_family=framework.family) }}">
+    <a class="govuk-link" href="{{ url_for('external.list_opportunities', framework_family=framework.family) }}">
       Search for other opportunities
     </a>
   </p>
@@ -63,9 +63,9 @@
         %}
             {% call summary.field(action=True) %}
                 {% if item.brief.status == 'live' %}
-                    <a href="{{ url }}">Complete your application</a>
+                    <a class="govuk-link" href="{{ url }}">Complete your application</a>
                 {% else %}
-                    <a href="{{ url_for('external.get_brief_by_id', framework_family=item.brief.framework.family, brief_id=item.briefId) }}">Applications closed</a>
+                    <a class="govuk-link" href="{{ url_for('external.get_brief_by_id', framework_family=item.brief.framework.family, brief_id=item.briefId) }}">Applications closed</a>
                 {% endif %}
             {% endcall %}
         {% endwith %}
@@ -87,7 +87,7 @@
 
     {% call summary.row() %}
         {% call summary.field(first=True, wide=True) %}
-            <a href="{{ url_for('.check_brief_response_answers', brief_id=item.briefId, brief_response_id=item.id) }}">{{ item.brief.title }}</a>
+            <a class="govuk-link" href="{{ url_for('.check_brief_response_answers', brief_id=item.briefId, brief_response_id=item.id) }}">{{ item.brief.title }}</a>
         {% endcall %}
         {{ summary.text(item.brief.applicationsClosedAt|dateformat) }}
         {% if item.brief.status == "cancelled" %}
