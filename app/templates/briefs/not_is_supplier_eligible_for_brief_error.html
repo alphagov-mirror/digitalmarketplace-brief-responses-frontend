@@ -10,7 +10,7 @@
     <header class="page-heading-smaller">
       <h1>You can’t {{ inhibited_action }} this opportunity</h1>
     </header>
-    <p>
+    <p class="govuk-body">
       You can’t {{ inhibited_action }} this opportunity because
       {% if reason == "supplier-not-on-role" or reason == "supplier-not-on-lot" %}
         you didn’t say you could provide

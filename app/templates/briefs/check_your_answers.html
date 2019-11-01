@@ -44,7 +44,7 @@
 
     <div class="dmspeak">
       {% if brief_response.status != 'draft' %}
-      <p>
+      <p class="govuk-body">
         <a href="{{ url_for('external.get_brief_by_id', framework_family='digital-outcomes-and-specialists', brief_id=brief.id) }}">View the opportunity{{ ' and its outcome' if brief.status in ["awarded", "cancelled", "unsuccessful"] }}</a>
       </p>
       {% endif %}
@@ -60,13 +60,13 @@
   </div>
 </div>
 
-<p class="padding-bottom-small">&nbsp;</p>
+<p class="padding-bottom-small govuk-body">&nbsp;</p>
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% if brief_response.status == 'draft' and brief.status == 'live' %}
         <form action="{{ url_for('.check_brief_response_answers', brief_id=brief.id, brief_response_id=brief_response.id) }}" method="post">
-          <p>Once you submit you can update your application until {{ brief.applicationsClosedAt|utcdatetimeformat }}.</p>
+          <p class="govuk-body">Once you submit you can update your application until {{ brief.applicationsClosedAt|utcdatetimeformat }}.</p>
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           {{ govukButton({"text": "Submit application"}) }}
         </form>
