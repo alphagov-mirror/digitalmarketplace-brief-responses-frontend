@@ -95,6 +95,11 @@ To just run the application use the `run-app` target.
 Use the app at http://127.0.0.1:5006/suppliers/opportunities.
 
 When using the development server the brief responses frontend runs on port 5006 by default.
+This can be changed by setting the `DM_BRIEF_RESPONSES_PORT` environment variable, e.g.
+to set the port number to 9006:
+```
+export DM_BRIEFS_PORT=9006
+```
 
 Note: The login is located in the user frontend application, so this needs to be running as well to login as a supplier.
 
