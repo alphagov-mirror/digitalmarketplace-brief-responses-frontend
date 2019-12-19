@@ -56,6 +56,7 @@ class Config(object):
         digitalmarketplace_govuk_frontend = os.path.join(repo_root, "node_modules", "digitalmarketplace-govuk-frontend")
         template_folders = [
             os.path.join(repo_root, "app", "templates"),
+            os.path.join(digitalmarketplace_govuk_frontend),
             os.path.join(digitalmarketplace_govuk_frontend, "digitalmarketplace", "templates"),
             os.path.join(digitalmarketplace_govuk_frontend, "govuk-frontend"),
         ]
