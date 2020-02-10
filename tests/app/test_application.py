@@ -1,9 +1,9 @@
 # coding=utf-8
-
 import mock
-import pytest
+from lxml import html
 from wtforms import ValidationError
 from werkzeug.exceptions import BadRequest
+
 from .helpers import BaseApplicationTest
 from dmtestutils.api_model_stubs import BriefStub
 from dmapiclient.errors import HTTPError
@@ -78,23 +78,13 @@ class TestApplication(BaseApplicationTest):
         assert res.status_code == 200
         assert 'DENY', res.headers['X-Frame-Options']
 
-    # Cookie banner temporarily disabled
-    @pytest.mark.skip
     def test_should_use_local_cookie_page_on_cookie_message(self):
-        self.login()
-        self.data_api_client.get_brief.return_value = BriefStub(status='live').single_result_response()
-
         res = self.client.get('/suppliers/opportunities/1/ask-a-question')
         assert res.status_code == 200
-        assert '<p>GOV.UK uses cookies to make the site simpler. <a href="/cookies">Find ' \
-            'out more about cookies</a></p>' in res.get_data(as_text=True)
 
-    # Analytics temporarily disabled
-    @pytest.mark.skip
-    def test_analytics_code_should_be_in_javascript(self):
-        res = self.client.get('/suppliers/opportunities/static/javascripts/application.js')
-        assert res.status_code == 200
-        assert 'analytics.trackPageview' in res.get_data(as_text=True)
+        document = html.fromstring(res.get_data(as_text=True))
+        cookie_banner = document.xpath('//div[@id="dm-cookie-banner"]')
+        assert cookie_banner[0].xpath('//h2//text()')[0].strip() == "Can we store analytics cookies on your device?"
 
     @mock.patch('flask_wtf.csrf.validate_csrf', autospec=True)
     def test_csrf_handler_redirects_to_login(self, validate_csrf):
