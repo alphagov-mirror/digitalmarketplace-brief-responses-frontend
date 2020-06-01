@@ -1,7 +1,11 @@
 {% extends "_base_page.html" %}
 
 {% block pageTitle %}
-  Your response to ‘{{ brief.title }}’ - Digital Marketplace
+  {% if brief_response.status == 'draft' %}
+    Check and submit your answers - Digital Marketplace
+  {% else %}
+    Your application for ‘{{ brief.title }}’ - Digital Marketplace
+  {% endif %}
 {% endblock %}
 
 {% block breadcrumb %}
