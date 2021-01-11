@@ -12,10 +12,7 @@ const path = require('path')
 let environment
 const repoRoot = path.join(__dirname)
 const npmRoot = path.join(repoRoot, 'node_modules')
-const govukToolkitRoot = path.join(npmRoot, 'govuk_frontend_toolkit')
-const govukElementsRoot = path.join(npmRoot, 'govuk-elements-sass')
 const govukFrontendRoot = path.join(npmRoot, 'govuk-frontend')
-const dmToolkitRoot = path.join(npmRoot, 'digitalmarketplace-frontend-toolkit', 'toolkit')
 const sspContentRoot = path.join(npmRoot, 'digitalmarketplace-frameworks')
 const assetsFolder = path.join(repoRoot, 'app', 'assets')
 const staticFolder = path.join(repoRoot, 'app', 'static')
@@ -37,10 +34,7 @@ const sassOptions = {
     outputStyle: 'expanded',
     lineNumbers: true,
     includePaths: [
-      path.join(assetsFolder, 'scss'),
-      path.join(dmToolkitRoot, 'scss'),
-      path.join(govukToolkitRoot, 'stylesheets'),
-      path.join(govukElementsRoot, 'public', 'sass')
+      path.join(assetsFolder, 'scss')
     ],
     sourceComments: true,
     errLogToConsole: true
@@ -49,10 +43,7 @@ const sassOptions = {
     outputStyle: 'compressed',
     lineNumbers: true,
     includePaths: [
-      path.join(assetsFolder, 'scss'),
-      path.join(dmToolkitRoot, 'scss'),
-      path.join(govukToolkitRoot, 'stylesheets'),
-      path.join(govukElementsRoot, 'public', 'sass')
+      path.join(assetsFolder, 'scss')
     ]
   }
 }
@@ -143,42 +134,6 @@ function copyFactory (resourceName, sourceFolder, targetFolder) {
 }
 
 gulp.task(
-  'copy:dm_toolkit_assets:stylesheets',
-  copyFactory(
-    'stylesheets from the Digital Marketplace frontend toolkit',
-    path.join(dmToolkitRoot, 'scss'),
-    'app/assets/scss/toolkit'
-  )
-)
-
-gulp.task(
-  'copy:dm_toolkit_assets:images',
-  copyFactory(
-    'images from the Digital Marketplace frontend toolkit',
-    path.join(dmToolkitRoot, 'images'),
-    path.join(staticFolder, 'images')
-  )
-)
-
-gulp.task(
-  'copy:govuk_toolkit_assets:images',
-  copyFactory(
-    'images from the GOVUK frontend toolkit',
-    path.join(govukToolkitRoot, 'images'),
-    path.join(staticFolder, 'images')
-  )
-)
-
-gulp.task(
-  'copy:dm_toolkit_assets:templates',
-  copyFactory(
-    'templates from the Digital Marketplace frontend toolkit',
-    path.join(dmToolkitRoot, 'templates'),
-    'app/templates/toolkit'
-  )
-)
-
-gulp.task(
   'copy:images',
   copyFactory(
     'image assets from app to static folder',
@@ -239,10 +194,6 @@ gulp.task(
   'copy',
   gulp.parallel(
     'copy:frameworks',
-    'copy:govuk_toolkit_assets:images',
-    'copy:dm_toolkit_assets:stylesheets',
-    'copy:dm_toolkit_assets:images',
-    'copy:dm_toolkit_assets:templates',
     'copy:images',
     'copy:govuk_frontend_assets:fonts',
     'copy:govuk_frontend_assets:images',
